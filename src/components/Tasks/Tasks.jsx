@@ -3,10 +3,7 @@ import { selectTasks } from "../../redux/selectors";
 import { deleteTask, updateTask } from "../../redux/tasksSlise";
 import { useState } from "react";
 import TaskModal from "../TaskModal/TaskModal";
-import Button from "react-bootstrap/Button";
-import ListGroup from "react-bootstrap/ListGroup";
-import Form from "react-bootstrap/Form";
-import Stack from "react-bootstrap/Stack";
+import { Button, ListGroup, Form, Stack, Dropdown } from "react-bootstrap";
 
 const Tasks = () => {
   const [showModal, setShowModal] = useState(false);
@@ -54,30 +51,57 @@ const Tasks = () => {
         >
           Add task
         </Button>
-        <Button
-          variant={filter === "All" ? "info" : "outline-info"}
-          type="button"
-          className="mb-2 mt-2 ms-2 ms-auto"
-          onClick={() => setFilter("All")}
-        >
-          All
-        </Button>
-        <Button
-          variant={filter === "Completed" ? "success" : "outline-success"}
-          type="button"
-          className="mb-2 mt-2 ms-2 p-2 "
-          onClick={() => setFilter("Completed")}
-        >
-          Completed
-        </Button>
-        <Button
-          variant={filter === "Uncompleted" ? "warning" : "outline-warning"}
-          type="button"
-          className="mb-2 mt-2 ms-2 p-2"
-          onClick={() => setFilter("Uncompleted")}
-        >
-          Uncompleted
-        </Button>
+        <Dropdown className="dropdown ms-auto">
+          <Dropdown.Toggle variant="outline-info" id="filter-dropdown">
+            Filter: {filter}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item
+              active={filter === "All"}
+              onClick={() => setFilter("All")}
+            >
+              All
+            </Dropdown.Item>
+            <Dropdown.Item
+              active={filter === "Completed"}
+              onClick={() => setFilter("Completed")}
+            >
+              Completed
+            </Dropdown.Item>
+            <Dropdown.Item
+              active={filter === "Uncompleted"}
+              onClick={() => setFilter("Uncompleted")}
+            >
+              Uncompleted
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <div className="box-btn ms-auto">
+          <Button
+            variant={filter === "All" ? "info" : "outline-info"}
+            type="button"
+            className="mb-2 mt-2 ms-2 ms-auto"
+            onClick={() => setFilter("All")}
+          >
+            All
+          </Button>
+          <Button
+            variant={filter === "Completed" ? "success" : "outline-success"}
+            type="button"
+            className="mb-2 mt-2 ms-2 "
+            onClick={() => setFilter("Completed")}
+          >
+            Completed
+          </Button>
+          <Button
+            variant={filter === "Uncompleted" ? "warning" : "outline-warning"}
+            type="button"
+            className="mb-2 mt-2 ms-2 "
+            onClick={() => setFilter("Uncompleted")}
+          >
+            Uncompleted
+          </Button>
+        </div>
       </Stack>
       {tasks.length === 0 ? (
         <div className="title">
@@ -88,7 +112,7 @@ const Tasks = () => {
           {filteredTasks.map(({ id, name, description, status }) => (
             <ListGroup.Item
               as="li"
-              className="d-flex justify-content-between align-items-start"
+              className="d-flex justify-content-between align-items-start gap-2"
               key={id}
             >
               <Form.Check
@@ -118,7 +142,7 @@ const Tasks = () => {
                 type="button"
                 onClick={() => dispatch(deleteTask(id))}
               >
-                remove task
+                delete
               </Button>
             </ListGroup.Item>
           ))}

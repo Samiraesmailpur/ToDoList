@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import FormB from "react-bootstrap/Form";
+import FormBootstrap from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { addTask, updateTask } from "../../redux/tasksSlise";
@@ -42,42 +42,42 @@ const TaskForm = ({ task, hideModal }) => {
       }}
     >
       {({ errors, touched }) => (
-        <Form as={FormB}>
-          <FormB.Group controlId="name" className="mb-2">
-            <FormB.Label>Name</FormB.Label>
+        <Form as={FormBootstrap}>
+          <FormBootstrap.Group controlId="name" className="mb-2">
+            <FormBootstrap.Label>Name</FormBootstrap.Label>
             <Field
               name="name"
-              as={FormB.Control}
+              as={FormBootstrap.Control}
               type="text"
               placeholder="Enter name"
             />
             {errors.name && touched.name ? <div>{errors.name}</div> : null}
-          </FormB.Group>
+          </FormBootstrap.Group>
 
-          <FormB.Group controlId="description" className="mb-2">
-            <FormB.Label>Description</FormB.Label>
+          <FormBootstrap.Group controlId="description" className="mb-2">
+            <FormBootstrap.Label>Description</FormBootstrap.Label>
             <Field
               name="description"
-              as={FormB.Control}
+              as={FormBootstrap.Control}
               type="text"
               placeholder="Enter description"
             />
             {errors.description && touched.description ? (
               <div>{errors.description}</div>
             ) : null}
-          </FormB.Group>
-          <FormB.Group controlId="status" className="d-flex gap-2">
-            <FormB.Label>Status</FormB.Label>
+          </FormBootstrap.Group>
+          <FormBootstrap.Group controlId="status" className="d-flex gap-2">
+            <FormBootstrap.Label>Status</FormBootstrap.Label>
             <Field
               name="status"
-              as={FormB.Check}
+              as={FormBootstrap.Check}
               aria-label="option 1"
               type="checkbox"
             />
             {errors.status && touched.status ? (
               <div>{errors.status}</div>
             ) : null}
-          </FormB.Group>
+          </FormBootstrap.Group>
           <Button className="mt-2" variant="primary" type="submit">
             {task ? "Edit" : "Add"}
           </Button>

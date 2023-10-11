@@ -1,7 +1,12 @@
 import Tasks from "./components/Tasks/Tasks";
+import Container from "react-bootstrap/Container";
 
 function App() {
-  return <Tasks />;
+  return (
+    <Container fluid>
+      <Tasks />
+    </Container>
+  );
 }
 
 export default App;

@@ -1,6 +1,6 @@
 # ToDoList
 
-todoitrightnow.netlify.app
+https://todoitrightnow.netlify.app
 
 Installation and launch project
 

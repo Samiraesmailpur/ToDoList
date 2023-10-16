@@ -103,7 +103,7 @@ const Tasks = () => {
           </Button>
         </div>
       </Stack>
-      {tasks.length === 0 ? (
+      {filteredTasks.length === 0 ? (
         <div className="title">
           You don't have any tasks right now. You can relax.
         </div>
@@ -146,13 +146,13 @@ const Tasks = () => {
               </Button>
             </ListGroup.Item>
           ))}
-          <TaskModal
-            task={selectedTask}
-            show={showModal}
-            onHide={handleCloseModal}
-          />
         </ListGroup>
       )}
+      <TaskModal
+        task={selectedTask}
+        show={showModal}
+        onHide={handleCloseModal}
+      />
     </>
   );
 };

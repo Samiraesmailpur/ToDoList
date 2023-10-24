@@ -10,4 +10,4 @@ Installation and launch project
 
 3. Run the application: npm start
 
-4. The backend server will start and be accessible at http://localhost:3000.
+
